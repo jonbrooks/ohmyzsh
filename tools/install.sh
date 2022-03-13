@@ -55,8 +55,11 @@ custom_zsh=${ZSH:+yes}
 
 # Default settings
 ZSH="${ZSH:-$HOME/.oh-my-zsh}"
-REPO=${REPO:-ohmyzsh/ohmyzsh}
+REPO=${REPO:-jonbrooks/ohmyzsh}
 REMOTE=${REMOTE:-https://github.com/${REPO}.git}
+
+#Remove after merging:
+BRANCH="customizations"
 BRANCH=${BRANCH:-master}
 
 # Other options
