@@ -49,6 +49,20 @@ HOME="${HOME:-$(getent passwd $USER 2>/dev/null | cut -d: -f6)}"
 # macOS does not have getent, but this works even if $HOME is unset
 HOME="${HOME:-$(eval echo ~$USER)}"
 
+############ - JB Installation customizations ##############
+
+#Move any existing .zshrc
+OLD_ZSHRC=~/.zshrc.pre-oh-my-zsh
+if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
+  echo "Found ~/.zshrc. Backing up to ${OLD_ZSHRC}"
+  mv ~/.zshrc "${OLD_ZSHRC}"
+fi
+cp "${ZSH}/jb-setup/zshrc-initial" ~/.zshrc
+KEEP_ZSHRC="yes"
+REPO="jonbrooks/ohmyzsh"
+BRANCH="customizations" # <- Remove if we merge to master:
+
+############################################################
 
 # Track if $ZSH was provided
 custom_zsh=${ZSH:+yes}
