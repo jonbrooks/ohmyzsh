@@ -60,7 +60,6 @@ fi
 cp "${ZSH}/jb-setup/zshrc-initial" ~/.zshrc
 KEEP_ZSHRC="yes"
 REPO="jonbrooks/ohmyzsh"
-BRANCH="customizations" # <- Remove if we merge to master:
 
 ############################################################
 
