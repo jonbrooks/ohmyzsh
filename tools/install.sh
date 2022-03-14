@@ -50,18 +50,7 @@ HOME="${HOME:-$(getent passwd $USER 2>/dev/null | cut -d: -f6)}"
 HOME="${HOME:-$(eval echo ~$USER)}"
 
 ############ - JB Installation customizations ##############
-ZSH="${ZSH:-$HOME/.oh-my-zsh}"
-
-#Move any existing .zshrc
-OLD_ZSHRC=~/.zshrc.pre-oh-my-zsh
-if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
-  echo "Found ~/.zshrc. Backing up to ${OLD_ZSHRC}"
-  mv ~/.zshrc "${OLD_ZSHRC}"
-fi
-cp "${ZSH}/jb-setup/zshrc-initial" ~/.zshrc
-KEEP_ZSHRC="yes"
 REPO="jonbrooks/ohmyzsh"
-
 ############################################################
 
 # Track if $ZSH was provided
@@ -510,7 +499,16 @@ EOF
   fi
 
   setup_ohmyzsh
-  setup_zshrc
+  ############ - JB Installation custom zshrc setup ##############
+  #Move any existing .zshrc
+  OLD_ZSHRC=~/.zshrc.pre-oh-my-zsh
+  if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
+    echo "Found ~/.zshrc. Backing up to ${OLD_ZSHRC}"
+    mv ~/.zshrc "${OLD_ZSHRC}"
+  fi
+  #Copy over premade zshrc file
+  cp "${ZSH}/jb-setup/zshrc-initial" ~/.zshrc
+  ############################################################
   setup_shell
 
   print_success
