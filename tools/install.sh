@@ -50,6 +50,7 @@ HOME="${HOME:-$(getent passwd $USER 2>/dev/null | cut -d: -f6)}"
 HOME="${HOME:-$(eval echo ~$USER)}"
 
 ############ - JB Installation customizations ##############
+ZSH="${ZSH:-$HOME/.oh-my-zsh}"
 
 #Move any existing .zshrc
 OLD_ZSHRC=~/.zshrc.pre-oh-my-zsh
